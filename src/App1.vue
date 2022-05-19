@@ -3,8 +3,8 @@
     <div class="flex flex-col justify-center items-center h-screen relative">
       <div class="flex flex-col bg-gray-800 mx-4 rounded overflow-hidden shadow-lg">
         <div class="flex flex-col justify-end w-80 h-80 sm:w-96 sm:h-96 relative bg-gradient-to-b from-blue-600 via-blue-500 to-blue-400" :style="style">
-          <div class="flex flex-row text-white justify-between items-center text-3xl sm:text-4xl font-time p-8 sm:p-10 font-bold" style="text-shadow: 0px 0px 4px rgba(0, 0, 0, 1);">
-            <div>{{ domain }}</div>
+          <div class="flex flex-row text-white justify-between items-center text-3xl sm:text-4xl font-time p-8 sm:p-10 font-bold" style="text-shadow: 0px 0px 7px rgba(0, 0, 0, 1);">
+            <div>{{ '09h09.tez' }}</div>
             <div class="w-12 text-center">{{seconds}}</div>
           </div>
         </div>
@@ -39,7 +39,7 @@
 import axios from 'axios'
 const REGISTRY = '1264'
 
-const ipfsLink = (uri) => uri.startsWith('ipfs://') ? `https://cloudflare-ipfs.com/ipfs/${uri.replace('ipfs://','')}` : uri
+// const ipfsLink = (uri) => uri.startsWith('ipfs://') ? `https://cloudflare-ipfs.com/ipfs/${uri.replace('ipfs://','')}` : uri
 
 const str2hex = (str) => {
     let result = ''
@@ -71,20 +71,20 @@ export default {
       return this.domainNft ? `https://objkt.com/asset/tezosdomains/${this.domainNft}` : ''
     },
     twitter () {
-      return this.owner.twitter ? `https://twitter.com/${this.owner.twitter}` : ''
+      return this.owner.twitter ? `https://twitter.com/${this.owner.twitter}` : 'zz'
     },
     site () {
       return this.owner.site || (this.address ? `https://objkt.com/profile/${this.address}/created` : `https://app.tezos.domains/domain/${this.domain}`)
     },
     token () {
-      if (this.art.length === 0) return
-      const delay = 60 / this.art.length
-      const { contract, tokenId, metadata } = this.art[Math.floor(this.s / delay)]
+    //   if (this.art.length === 0) return
+    //   const delay = 60 / this.art.length
+    //   const { contract, tokenId, metadata } = this.art[Math.floor(this.s / delay)]
       return {
-        tokenId,
-        contract,
-        uri: ipfsLink(metadata.displayUri || metadata.thumbnailUri),
-        name: metadata.name || ''
+        tokenId: 1,
+        contract: 'xx',
+        uri: '/16.png', //ipfsLink(metadata.displayUri || metadata.thumbnailUri),
+        name: ''
       }
     },
     style () {
